@@ -4,7 +4,7 @@ let starAvatars = [];
 let changingAvatar = false;
 
 let startPage = 0;
-const maxAvatarsPerPage = 36;
+const maxAvatarsPerPage = 42;
 
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.avatar-grid');
@@ -129,14 +129,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
     }
 
-    const search = document.querySelector('.search');
+    document.getElementById("filter-button").addEventListener('click', () => {
+        const search = document.querySelector('.search').value;
 
-    search.addEventListener('input', (event) => {
-        const query = event.target.value.toLowerCase();
+        if (search.length === 0) {
+            const grid = document.querySelector('.avatar-grid');
+
+            if (!grid) {
+                console.error('Grid element not found');
+                return;
+            }
+
+            if (grid.classList.contains('avatar-card') === false) {
+                grid.innerHTML = '';
+
+                startPage = 0;
+
+                updatePagination();
+                renderAvatars(avatars.slice(startPage * maxAvatarsPerPage, (startPage + 1) * maxAvatarsPerPage));
+                showConfirmMessage("Resetting Avatars...");
+                return
+            }
+
+            showErrorMessage('Please enter a search query.');
+            return;
+        }
+
         grid.innerHTML = '';
-        const filteredAvatars = avatars.filter(avatar => avatar.name.toLowerCase().includes(query));
-        renderAvatars(filteredAvatars);
-    });
+
+        let filteredAvatars = avatars.filter(avatar => avatar.name.toLowerCase().includes(search.toLowerCase()));
+
+        if (filteredAvatars.length === 0) {
+            showErrorMessage('No avatars found with that name.');
+            return;
+        }
+
+        if (filteredAvatars.length <= maxAvatarsPerPage) {
+            renderAvatars(filteredAvatars);
+        } else {
+            startPage = 0;
+            updatePagination();
+            renderAvatars(filteredAvatars.slice(startPage * maxAvatarsPerPage, (startPage + 1) * maxAvatarsPerPage));
+        }
+    })
 
     const previousPageButton = document.getElementById('previous-page');
     const nextPageButton = document.getElementById('next-page');
@@ -216,6 +251,9 @@ function renderAvatars(avatars) {
     }
 
     grid.innerHTML = '';
+
+document.body.style.minHeight = `${Math.ceil(avatars.length / maxAvatarsPerPage) * 275}vh`;
+
     avatars.forEach(avatar => {
         const card = document.createElement('div');
         card.classList.add('avatar-card');

@@ -133,7 +133,7 @@ func RegisterWebstocks() {
 				Name:         avatar.Info.Name,
 				ImageUrl:     avatar.Info.ImageUrl,
 				Description:  avatar.Info.Description,
-				CreatedAt:    *avatar.CachedTime,
+				CreatedAt:    avatar.CachedTime,
 				EquippedTime: avatar.EquippedTime,
 			})
 
@@ -183,7 +183,7 @@ func RegisterWebstocks() {
 				Name:         avatar.Name,
 				ImageUrl:     avatar.ImageUrl,
 				Description:  avatar.Description,
-				CreatedAt:    avatarInfo.Time,
+				CreatedAt:    &avatarInfo.Time,
 				EquippedTime: nil,
 			})
 
@@ -363,7 +363,7 @@ func getAvatarIds() []Types.FileInfo {
 		done <- true
 	}
 
-	numWorkers := 10
+	numWorkers := 1
 
 	for i := 0; i < numWorkers; i++ {
 		go worker()

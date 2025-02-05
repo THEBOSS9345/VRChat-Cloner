@@ -335,3 +335,194 @@
             grid-template-columns: repeat(4, 1fr);
         }
     }
+
+    /* Global Styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #1a1a1a;
+        background-image: radial-gradient(ellipse at center, #1a1a1a 0%, #0d0d0d 100%);
+        color: #ffffff;
+        min-height: 275vh;
+        display: flex;
+    }
+
+    /* Dashboard Layout */
+    .dashboard {
+        display: flex;
+        width: 100%;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+        width: 300px;
+        min-width: 300px;
+        background-color: #2d2d2d;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        height: calc(100vh - 4rem);
+        position: sticky;
+        top: 2rem;
+    }
+
+    /* Profile Section */
+    .profile {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        object-fit: cover;
+        border: 3px solid #ec4899;
+    }
+
+    .username {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    /* Filter Section */
+    .sidebar h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #a855f7;
+    }
+
+    .search {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #3a3a3a;
+        color: #ffffff;
+        border: none;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    .search:focus {
+        outline: 2px solid #a855f7;
+        background-color: #404040;
+    }
+
+    .filter-button {
+        width: 100%;
+        padding: 0.75rem;
+        background: linear-gradient(to right, #a855f7, #ec4899);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: opacity 0.2s ease;
+    }
+
+    .filter-button:hover {
+        opacity: 0.9;
+    }
+
+    /* Main Content */
+    .main-content {
+        flex: 1;
+        background-color: #2d2d2d;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        background: linear-gradient(to right, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .avatar-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Pagination */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .pagination-button {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #3a3a3a;
+        color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .pagination-button:hover {
+        background-color: #4a4a4a;
+    }
+
+    .pagination-button.active {
+        background: linear-gradient(to right, #a855f7, #ec4899);
+    }
+
+    .pagination-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .dashboard {
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: static;
+            margin-bottom: 1rem;
+        }
+
+        .main-content {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .title {
+            font-size: 2rem;
+        }
+
+        .avatar-grid {
+            grid-template-columns: 1fr;
+        }
+    }

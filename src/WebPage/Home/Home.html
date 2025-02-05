@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,19 +5,30 @@
     <title>VRChat Avatar Selector</title>
 </head>
 <body>
-<div class="container">
+<div class="dashboard">
+    <!-- Sidebar with profile and filters -->
+    <aside class="sidebar">
+        <div class="profile">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+            <p class="username">Username</p>
+        </div>
+        <h3>Filters</h3>
+        <input type="text" class="search" placeholder="Search avatars...">
+        <button class="filter-button" id="filter-button">Apply Filters</button>
+    </aside>
 
-    <h1 class="title">VRChat Avatar Selector</h1>
-    <input type="text" class="search" placeholder="Search avatars by name...">
-    <div class="avatar-grid"></div>
-    <div class="pagination">
-        <button id="previous-page" class="pagination-button nav" disabled>&lt;</button>
-        <button id="page-1" class="pagination-button active">1</button>
-        <button id="page-2" class="pagination-button">2</button>
-        <button id="page-3" class="pagination-button">3</button>
-        <button id="next-page" class="pagination-button nav">&gt;</button>
-    </div>
+    <!-- Main content with avatars and pagination -->
+    <main class="main-content">
+        <h1 class="title">VRChat Avatar Selector</h1>
+        <div class="avatar-grid"></div>
+        <div class="pagination">
+            <button id="previous-page" class="pagination-button nav" disabled>&lt;</button>
+            <button id="page-1" class="pagination-button active">1</button>
+            <button id="page-2" class="pagination-button">2</button>
+            <button id="page-3" class="pagination-button">3</button>
+            <button id="next-page" class="pagination-button nav">&gt;</button>
+        </div>
+    </main>
 </div>
-
 </body>
 </html>
