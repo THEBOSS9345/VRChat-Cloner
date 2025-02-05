@@ -1,0 +1,11 @@
+# Ignore the database directory
+/database
+
+# Ignore the src.exe file
+/src.exe
+
+# Ignore the idea directory (IDE configurations, often created by JetBrains IDEs)
+.idea/
+
+# Ignore the config.json file
+/config.json
