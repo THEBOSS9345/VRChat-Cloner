@@ -1,6 +1,6 @@
 **AvatarHub**
 
-**AvatarHub** is a simple web application that allows users to upload and download avatars. It is built using the Django web framework. The application can be used on windows perating systems.
+**AvatarHub** is a simple web application that allows users to download avatars. It is built using the Django web framework. The application can be used on windows perating systems.
 
 **Stuff I need to fix**
 - [ ] Fix Avatar Sending and change client side calculation to server side calculation for faster speed and less memory usage
